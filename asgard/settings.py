@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')dmqriscby0=nq+qt6&xrf#pqachok!^+w972!5aqsd^n+-3l4'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', ')dmqriscby0=nq+qt6&xrf#pqachok!^+w972!5aqsd^n+-3l4')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', True)
+DEBUG = False
 
 ALLOWED_HOSTS = ['asgard-ar-card.herokuapp.com', '127.0.0.1']
 
@@ -119,6 +119,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+CSRF_COOKIE_SECURE = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'login'
