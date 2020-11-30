@@ -52,36 +52,17 @@
                     <img class="foto" src="https://gitcdn.link/repo/arrazy100/asgard_static/master/assets/img/Logo2.png" alt="">
                   </div>
                   <br>
-                  {% if form.errors %}
-                    <p style="color: tomato;">Username dan Password tidak cocok</p>
+                  {% if message %}
+                    <p style="color: tomato;">{{ message }}</p>
                   {% endif %}
-                  {% if next %}
-                    {% if user.is_authenticated %}
-                      <p style="color: tomato;">Akun anda tidak bisa mengakses halaman utama</p>
-                    {% else %}
-                      <p style="color: tomato;">Silahkan login untuk pergi ke halaman utama</p>
-                    {% endif %}
-                  {% endif %}
-                  <form method="post" action="{% url 'login' %}" class="user">
-                    {% csrf_token %}
-                    <div class="form-group">
-                      {{ form.username|as_crispy_field }}
-                    </div>
-                    <div class="form-group">
-                      {{ form.password|as_crispy_field }}
-                    </div>
-
-                    <input type="submit" style="background-color: #FF6166;border: #FF6166;"
-                      class="btn btn-primary btn-user btn-block" value="Login" />
-                    <input type="hidden" name="next" value="{{ next }}" />
-
-                  </form>
+                  {% csrf_token %}
+                  {% crispy form %}
                   <hr style="background-color:white;">
                   <div class="text-center">
-                    <a style="color: white;" class="small" href="{% url 'password_reset' %}>Forgot Password?</a>
+                    <a style="color: white;" class="small" href="{% url 'password_reset' %}">Forgot Password?</a>
                   </div>
                   <div class="text-center">
-                    <a style="color: white;" class="small" href="register.html">Create an Account!</a>
+                    <a style="color: white;" class="small" href="{% url 'register' %}">Create an Account!</a>
                   </div>
                 </div>
               </div>

@@ -122,7 +122,7 @@ USE_TZ = True
 
 CSRF_COOKIE_SECURE = True
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'login_view'
 LOGOUT_REDIRECT_URL = 'login'
 
 # Static files (CSS, JavaScript, Images)

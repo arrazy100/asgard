@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import include, path
 
-from asgard_mvc import views
+from asgard_mvc import views as v
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', v.index, name='index'),
     path('admin/', admin.site.urls),
+    path('accounts/login/', v.login_view, name='login'),
+    path('accounts/register/', v.register_view, name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
