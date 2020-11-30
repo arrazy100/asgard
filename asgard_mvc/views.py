@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import *
 
@@ -12,6 +13,7 @@ def index(request):
     context = {'username': username}
     return render(request, 'dashboard.html', context=context)
 
+@csrf_exempt
 def register_view(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -35,6 +37,7 @@ def register_view(request):
     context = {'form': form}
     return render(request, 'registration/register.html', context=context)
 
+@csrf_exempt
 def login_view(request):
     message = ''
 
