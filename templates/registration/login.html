@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="https://gitcdn.link/repo/arrazy100/asgard_static/master/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -57,9 +57,6 @@
                   {% endif %}
                   {% crispy form %}
                   <hr style="background-color:white;">
-                  <div class="text-center">
-                    <a style="color: white;" class="small" href="{% url 'password_reset' %}">Forgot Password?</a>
-                  </div>
                   <div class="text-center">
                     <a style="color: white;" class="small" href="{% url 'register' %}">Create an Account!</a>
                   </div>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Edit Profile</h1>
+  </div>
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <img class="img-profile rounded-circle" src="{{ current_profile }}" width="60%">
+  </div>
+    {% if message %}
+        <p style="color: tomato;">{{ message }}</p> 
+    {% endif %}
+  <!-- Content Row -->
+  <div class="row">
+    <form method="post" enctype="multipart/form-data">
+        {{ form|crispy }}
+        <button type="submit" style="background-color: #FF6166;border: #FF6166;"
+            class="btn btn-primary btn-user btn-block">Change Profile Picture</button>
+    </form>
+  </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}

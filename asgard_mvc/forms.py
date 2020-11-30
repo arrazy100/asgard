@@ -4,6 +4,8 @@ from crispy_forms.layout import Layout, Submit, Div, Field, ButtonHolder, MultiF
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
+from .models import UserProfileModel
+
 class UserRegistrationForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(), required=True)
     email = forms.CharField(widget=forms.EmailInput(), required=True)
@@ -143,3 +145,9 @@ class UserLoginForm(forms.Form):
                 )
             )
         )
+
+class UserProfileForm(forms.ModelForm):
+    image_profile = forms.ImageField(label='')
+    class Meta:
+        model = UserProfileModel
+        fields = ('username', 'image_profile')

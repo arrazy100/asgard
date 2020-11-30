@@ -16,13 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import include, path
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from asgard_mvc import views as v
+from asgard import settings
 
 urlpatterns = [
     path('', v.index, name='index'),
+    path('profile/', v.userprofile_view, name='user_profile'),
     path('admin/', admin.site.urls),
     path('accounts/login/', v.login_view, name='login'),
     path('accounts/register/', v.register_view, name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
