@@ -154,4 +154,6 @@ def quiz_view(request):
 
 @login_required
 def discussion_view(request):
-    return render(request, 'discussion.html')
+    image = get_current_imageprofile(request.user.username)
+    context = {'image_profile': image}
+    return render(request, 'discussion.html', context=context)
