@@ -151,3 +151,7 @@ def quiz_view(request):
     context = {'level': level, 'soal': soal, 'image_profile': image}
 
     return render(request, 'quiz.html', context=context)   
+
+@login_required
+def discussion_view(request):
+    return render(request, 'discussion.html')

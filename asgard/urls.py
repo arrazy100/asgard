@@ -26,6 +26,7 @@ urlpatterns = [
     path('', v.index, name='index'),
     path('profile/', v.userprofile_view, name='user_profile'),
     path('quiz/', v.quiz_view, name='quiz'),
+    path('discussion/', v.discussion_view, name='discussion'),
     path('admin/', admin.site.urls),
     path('accounts/login/', v.login_view, name='login'),
     path('accounts/register/', v.register_view, name='register'),

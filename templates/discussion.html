@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load tawkto_tags %}
+
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="card">
+    <div class="card-header">
+        Discussion
+    </div>
+    <div class="card-body">
+        <div class="container mt-sm-3 my-1">
+            {% tawkto_script user_name=request.user.username user_email=request.user.email %}
+        </div>
+    </div>
+   </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
