@@ -151,3 +151,4 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfileModel
         fields = ('username', 'image_profile')
+        

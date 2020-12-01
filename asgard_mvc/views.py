@@ -7,6 +7,7 @@ from django import forms
 
 from .forms import *
 from .models import *
+import os
 
 def get_current_imageprofile(username):
     profile = UserProfileModel.objects.get(username=username)
@@ -18,7 +19,13 @@ def get_current_imageprofile(username):
 def index(request):
     username = request.user.username
     image_profile = get_current_imageprofile(username)
-    context = {'username': username, 'image_profile': image_profile}
+    level = 1
+    try:
+        user = UserProfileModel.objects.get(username=username)
+        level = user.current_level
+    except UserProfileModel.DoesNotExist:
+        pass
+    context = {'username': username, 'current_level': level, 'image_profile': image_profile}
     return render(request, 'dashboard.html', context=context)
 
 @csrf_exempt
@@ -35,7 +42,6 @@ def register_view(request):
             user.first_name = first_name
             user.last_name = last_name
             user.save()
-            UserProfileModel.objects.create(username=username, image_profile='marmut.jpeg')
             response = redirect('login')
             return response
         else:
@@ -94,3 +100,54 @@ def userprofile_view(request):
 
     context = {'form': form, 'message': message, 'current_profile': image.url, 'image_profile': image.url}
     return render(request, 'edit_profile.html', context=context)
+
+@login_required
+@csrf_exempt
+def quiz_view(request):
+    soal = ''
+    level = 0
+    skor = 0
+
+    image = get_current_imageprofile(request.user.username)
+    try:
+        level = UserProfileModel.objects.get(username=request.user.username).current_level
+    except UserProfileModel.DoesNotExist:
+        pass
+    try:
+        soal = QuizEntryModel.objects.filter(level=level)
+    except UserQuizEntryModel.DoesNotExist:
+        pass
+    
+    if request.method == 'POST':
+        for s in soal:
+            try:
+                radio = request.POST['radio{0}'.format(s.nomor)]
+                poin = s.poin.split(',')
+                if (radio):
+                    if (radio == 'a'):
+                        skor += int(poin[0])
+                    elif (radio == 'b'):
+                        skor += int(poin[1])
+                    elif (radio == 'c'):
+                        skor += int(poin[2])
+                    elif (radio == 'd'):
+                        skor += int(poin[3])
+                else:
+                    skor += 0
+            except:
+                pass
+                
+        if skor >= 20:
+            try:
+                user = UserProfileModel.objects.get(username=request.user.username)
+                user.current_level += 1
+                user.save()
+            except UserProfileModel.DoesNotExist:
+                pass
+        
+        response = redirect('quiz')
+        return response
+
+    context = {'level': level, 'soal': soal, 'image_profile': image}
+
+    return render(request, 'quiz.html', context=context)   
