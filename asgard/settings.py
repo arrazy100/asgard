@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', ')dmqriscby0=nq+qt6&xrf#pqachok!^+w972!5aqsd^n+-3l4')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['asgard-ar-card.herokuapp.com', 'afar0308.pythonanywhere.com', '127.0.0.1']
 
