@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', ')dmqriscby0=nq+qt6&xrf#pqachok
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['asgard-ar-card.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['asgard-ar-card.herokuapp.com', 'afar0308.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -134,11 +134,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
-
-# Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
