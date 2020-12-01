@@ -40,13 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'asgard_mvc',
-    'django_cleanup',
-    'tawkto'
+    'django_cleanup'
 ]
-
-TAWKTO_ID_SITE='5fc5e362920fc91564cc3c30'
-TAWKTO_API_KEY='30a7d25601be63bed1f70c912d59d678fc06ede2'
-TAWKTO_IS_SECURE=True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

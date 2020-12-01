@@ -86,6 +86,9 @@ def delete_quiz(sender, instance, *args, **kwargs):
     try:
         level = QuizEntryModel.objects.filter(level=instance.level)
         level.delete()
+        quiz = QuizModel.objects.get(level=instance.level)
+        quiz_xls = quiz.quiz_xls.path
+        os.remove(quiz_xls)
     except UserQuizEntryModel.DoesNotExist:
         pass
 
