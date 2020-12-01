@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'asgard_mvc'
+    'asgard_mvc',
+    'django_cleanup'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

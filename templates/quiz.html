@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="card">
+    <div class="card-header">
+        {% if soal %}
+            Level {{ level }}
+        {% endif %}
+    </div>
+    <div class="card-body">
+        <div class="container mt-sm-3 my-1">
+            {% if soal %}
+            <form method="post">
+                {% for s in soal %}
+                <div class="question ml-sm-5">
+                    <div class="py-2 h5"><b>{{ s.nomor }}. {{ s.soal }}</b></div>
+                    <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                        <label class="options"><input type="radio" name="radio{{ s.nomor }}" value="a"> <span
+                                class="checkmark">{{ s.jawaban_a }}</span>
+                        </label><br>
+                        <label class="options"><input type="radio" name="radio{{ s.nomor }}" value="b">
+                            <span class="checkmark">{{ s.jawaban_b }}</span><br>
+                        </label><br>
+                        <label class="options"><input type="radio" name="radio{{ s.nomor }}" value="c"> <span
+                                class="checkmark">{{ s.jawaban_c }}</span>
+                        </label><br>
+                        <label class="options"><input type="radio" name="radio{{ s.nomor }}" value="d"> <span
+                                class="checkmark">{{ s.jawaban_d }}</span>
+                        </label>
+                    </div>
+                </div>
+                <hr/>
+                {% endfor %}
+                <div class="d-flex align-items-center pt-3">
+                    <div class="ml-auto mr-sm-5"> <button class="btn btn-success">Finish</button> </div>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
