@@ -3,7 +3,16 @@
 {% block content %}
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <iframe id="ar" width="100%" height="100%" src="https://ar-avengers-car-crash.herokuapp.com/index_ar.html"></iframe>
+    <div class="row">
+        <div class="col">
+            <embed type="text/html" id="ar" src="/media/ar.html" height="500"> 
+        </div>
+        <div class="col">
+            <button type="button" id="btn" class="btn btn-success btn-block" style="visibility: hidden;">
+                Pilih Deadpool
+            </button>
+        </div>
+    </div>
 </div>
 <!-- /.container-fluid -->
 {% endblock %}
