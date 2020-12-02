@@ -5,10 +5,14 @@
 <div class="container-fluid">
     <div class="row">
         <div id="ar_div"></div>
-        <button type="button" id="btn" class="btn btn-success btn-block" style="visibility: hidden;">
-            Pilih Deadpool
-        </button>
-        <div id="deksripsi"></div>
+        <div id="deksripsi" class="col-md-6" style="margin-bottom: 10px; margin-top: 10px;">
+            <div class="card" id="desc_card" style="width: 100%; visibility: hidden;">
+              <div class="card-body">
+                <h2 class="card-title" id="desc_title"><b>a</b></h2>
+                <p class="card-text" id="desc_content">Some example text. Some example text.</p>
+              </div>
+            </div>
+        </div>
         <button id="toggle_button" class="btn btn-success btn-block" onclick="toggleAR();">Open AR</button>
     </div>
 </div>
@@ -26,6 +30,8 @@
         var div = document.getElementById("ar_div");
         var embed = document.getElementById("ar");
         var toggle_button = document.getElementById("toggle_button");
+        var desc_card = document.getElementById("desc_card");
+
         if (embed === null)
         {
             var new_embed = document.createElement("embed");
@@ -41,6 +47,7 @@
         {
             div.setAttribute("class", "");
             div.removeChild(embed);
+            desc_card.style.visibility = "hidden";
             toggle_button.innerHTML = "Open AR";
         }
     }

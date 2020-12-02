@@ -18,7 +18,7 @@
 				src="https://raw.githubusercontent.com/arrazy100/asgard_static/master/model/cat.gltf">
 			</a-asset-item>
 		</a-assets>
-		<a-marker id="cat" type="pattern"
+		<a-marker id="Kucing" type="pattern"
 			url="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/marker/pattern-tes.patt">
 			<a-entity id="cat_model" gltf-model="#cat" scale="1 1 1" rotation="0 0 0">
 			</a-entity>
@@ -35,7 +35,11 @@
 	{
 	    let marker = all_marker[i];
 		marker.addEventListener("markerFound", (e)=>{
-			parent.getElementById("deksripsi").innerHTML = marker.id;
+			let card = parent.getElementById("desc_card");
+			let title = parent.getElementById("desc_title");
+			let desc = parent.getElementById("desc_content");
+			title.innerHTML = "<b>" + marker.id + "</b>";
+			card.style.visibility = "visible";
 		});
 	}
 </script>
