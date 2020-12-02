@@ -27,8 +27,7 @@ class UserRegistrationForm(forms.Form):
                             css_class='form-control form-control-user',
                             css_id='exampleFirstName',
                             placeholder='First Name'
-                        ),
-                        css_class='col-sm-6 mb-3 mb-sm-0'
+                        )
                     ),
                     Column(
                         Field(
@@ -36,8 +35,7 @@ class UserRegistrationForm(forms.Form):
                             css_class='form-control form-control-user',
                             css_id='exampleLastName',
                             placeholder='Last Name'
-                        ),
-                        css_class='col-sm-6 mb-3 mb-sm-0'
+                        )
                     ),
                     Column(
                         Field(
@@ -61,8 +59,7 @@ class UserRegistrationForm(forms.Form):
                             css_class='form-control form-control-user',
                             css_id='exampleInputPassword',
                             placeholder='Password'
-                        ),
-                        css_class='col-sm-6 mb-3 mb-sm-0'
+                        )
                     ),
                     Column(
                         Field(
@@ -70,8 +67,7 @@ class UserRegistrationForm(forms.Form):
                             css_class='form-control form-control-user',
                             css_id='exampleRepeatPassword',
                             placeholder='Repeat Password'
-                        ),
-                        css_class='col-sm-6 mb-3 mb-sm-0'
+                        )
                     ),
                     css_class = 'form-group'
                 ),
