@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django import forms
+from django.forms.models import model_to_dict
 
 from .forms import *
 from .models import *
@@ -161,9 +162,9 @@ def discussion_view(request):
 
 @login_required
 def ar_view(request):
-    all_model = ARModel.objects.all()
-    for model in all_model:
-        print(model.model_url)
+    all_model = ARModel.objects.all().values()
+    list_model = [model for model in all_model]
+    list_model = dumps(list_model)
     image = get_current_imageprofile(request.user.username)
-    context = {'all_model': all_model, 'image_profile': image}
+    context = {'all_model': list_model, 'image_profile': image}
     return render(request, 'ar_view.html', context=context)

@@ -13,34 +13,64 @@
 	<a-scene id="scene" vr-mode-ui="enabled: false;"
 		renderer="precision: mediump; antialias: false; alpha: true; logarithmicDepthBuffer: true; colorManagement: true;"
 		embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
-		<a-assets>
-			<a-asset-item id="cat"
-				src="https://raw.githubusercontent.com/arrazy100/asgard_static/master/model/cat.gltf">
-			</a-asset-item>
-		</a-assets>
-		<a-marker id="Kucing" type="pattern"
-			url="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/marker/pattern-tes.patt">
-			<a-entity id="cat_model" gltf-model="#cat" scale="1 1 1" rotation="0 0 0">
-			</a-entity>
-		</a-marker>
 		<a-entity camera>
 		</a-entity>
 	</a-scene>
 </body>
 <script>
 	const scene = document.getElementById("scene");
-	const parent = window.parent.document;
-	var all_marker = document.getElementsByTagName("a-marker");
-	for (let i = 0; i < all_marker.length; i++)
+
+	var all_model = window.parent.all_model;
+	var assets = document.createElement("a-assets");
+	scene.appendChild(assets);
+
+	function loadModel()
 	{
-	    let marker = all_marker[i];
-		marker.addEventListener("markerFound", (e)=>{
-			let card = parent.getElementById("desc_card");
-			let title = parent.getElementById("desc_title");
-			let desc = parent.getElementById("desc_content");
-			title.innerHTML = "<b>" + marker.id + "</b>";
-			card.style.visibility = "visible";
-		});
+		for (let i = 0; i < all_model.length; i++)
+		{
+			let new_asset_item = document.createElement("a-asset-item");
+			new_asset_item.setAttribute("id", all_model[i].model_id);
+			new_asset_item.setAttribute("src", all_model[i].model_url);
+			assets.appendChild(new_asset_item);
+			let new_marker = document.createElement("a-marker");
+			new_marker.setAttribute("id", all_model[i].model_name);
+			new_marker.setAttribute("type", "pattern");
+			new_marker.setAttribute("url", all_model[i].marker_pattern_url);
+			scene.appendChild(new_marker);
+			let new_entity = document.createElement("a-entity");
+			new_entity.setAttribute("id", all_model[i].model_id + "_model");
+			new_entity.setAttribute("id", all_model[i].model_id + "_model");
+			new_entity.setAttribute("gltf-model", "#" + all_model[i].model_id);
+			let scale_x = all_model[i].model_scale_x;
+			let scale_y = all_model[i].model_scale_y;
+			let scale_z = all_model[i].model_scale_z;
+			new_entity.setAttribute("scale", {x: scale_x, y: scale_y, z: scale_z});
+			new_marker.appendChild(new_entity);
+		}
 	}
+
+	function fireMarkerEvent()
+	{
+		const parent = window.parent.document;
+		var all_marker = document.getElementsByTagName("a-marker");
+		console.log(all_marker);
+
+		for (let i = 0; i < all_marker.length; i++)
+		{
+			let marker = all_marker[i];
+			marker.addEventListener("markerFound", (e)=>{
+				let card = parent.getElementById("desc_card");
+				let title = parent.getElementById("desc_title");
+				let desc = parent.getElementById("desc_content");
+				title.innerHTML = "<b>" + marker.id + "</b>";
+				card.style.visibility = "visible";
+			});
+		}
+	}
+
+	scene.addEventListener('loaded', function() {
+		loadModel();
+		fireMarkerEvent();
+	});
 </script>
 </html>

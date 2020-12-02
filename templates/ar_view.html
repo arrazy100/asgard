@@ -26,6 +26,8 @@
     }
 </style>
 <script>
+    var all_model = JSON.parse('{{ all_model | escapejs }}');
+    
     function toggleAR(){
         var div = document.getElementById("ar_div");
         var embed = document.getElementById("ar");
