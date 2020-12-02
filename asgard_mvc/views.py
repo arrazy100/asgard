@@ -157,3 +157,9 @@ def discussion_view(request):
     image = get_current_imageprofile(request.user.username)
     context = {'image_profile': image}
     return render(request, 'discussion.html', context=context)
+
+@login_required
+def ar_view(request):
+    image = get_current_imageprofile(request.user.username)
+    context = {'image_profile': image}
+    return render(request, 'ar_view.html', context=context)

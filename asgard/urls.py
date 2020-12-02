@@ -25,6 +25,7 @@ from asgard import settings
 urlpatterns = [
     path('', v.index, name='index'),
     path('profile/', v.userprofile_view, name='user_profile'),
+    path('ar/', v.ar_view, name='ar'),
     path('quiz/', v.quiz_view, name='quiz'),
     path('discussion/', v.discussion_view, name='discussion'),
     path('admin/', admin.site.urls),
