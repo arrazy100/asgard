@@ -7,6 +7,7 @@ from django import forms
 
 from .forms import *
 from .models import *
+from json import dumps
 import os
 
 def get_current_imageprofile(username):
@@ -160,6 +161,9 @@ def discussion_view(request):
 
 @login_required
 def ar_view(request):
+    all_model = ARModel.objects.all()
+    for model in all_model:
+        print(model.model_url)
     image = get_current_imageprofile(request.user.username)
-    context = {'image_profile': image}
+    context = {'all_model': all_model, 'image_profile': image}
     return render(request, 'ar_view.html', context=context)

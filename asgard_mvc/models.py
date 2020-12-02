@@ -94,3 +94,8 @@ def delete_quiz(sender, instance, *args, **kwargs):
 
 signals.post_save.connect(receiver=create_quiz, sender=QuizModel)
 signals.post_delete.connect(receiver=delete_quiz, sender=QuizModel)
+
+class ARModel(models.Model):
+    model_name = models.CharField(max_length=100)
+    model_url = models.URLField(max_length=100)
+    marker_pattern_url = models.URLField(max_length=100, default='')

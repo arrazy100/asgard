@@ -4,15 +4,37 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col">
-            <embed type="text/html" id="ar" src="/media/ar.html" height="500"> 
+        <div id="ar_div">
         </div>
-        <div class="col">
-            <button type="button" id="btn" class="btn btn-success btn-block" style="visibility: hidden;">
-                Pilih Deadpool
-            </button>
-        </div>
+        <button type="button" id="btn" class="btn btn-success btn-block" style="visibility: hidden;">
+            Pilih Deadpool
+        </button>
+        <button id="toggle_button" class="btn btn-success btn-block" onclick="toggleAR();">Open AR</button>
     </div>
 </div>
 <!-- /.container-fluid -->
+<script>
+    function toggleAR(){
+        var div = document.getElementById("ar_div");
+        var embed = document.getElementById("ar");
+        var toggle_button = document.getElementById("toggle_button");
+        if (embed === null)
+        {
+            var new_embed = document.createElement("embed");
+            new_embed.setAttribute("type", "text/html");
+            new_embed.setAttribute("class", "embed-responsive-item");
+            new_embed.setAttribute("id", "ar");
+            new_embed.setAttribute("src", "/media/ar.html");
+            div.setAttribute("class", "embed-responsive embed-responsive-4by3");
+            div.appendChild(new_embed);
+            toggle_button.innerHTML = "Close AR";
+        }
+        else
+        {
+            div.setAttribute("class", "");
+            div.removeChild(embed);
+            toggle_button.innerHTML = "Open AR";
+        }
+    }
+</script>
 {% endblock %}

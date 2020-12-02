@@ -6,6 +6,7 @@
 	</script>
 	<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+	<title>Project: Asgard</title>
 </head>
 
 <body style="margin : 0px; overflow: hidden;">
@@ -13,225 +14,17 @@
 		renderer="precision: mediump; antialias: false; alpha: true; logarithmicDepthBuffer: true; colorManagement: true;"
 		embedded arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 		<a-assets>
-			<a-asset-item id="deadpool"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/deadpool/dedpul.gltf">
+			<a-asset-item id="cat"
+				src="https://raw.githubusercontent.com/arrazy100/asgard_static/master/model/cat.gltf">
 			</a-asset-item>
-			<a-asset-item id="antman"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/ant-man/ant-man.gltf">
-			</a-asset-item>
-			<a-asset-item id="spidy"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/spidy/spidy.gltf">
-			</a-asset-item>
-			<a-asset-item id="im"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/ironman/mark42.gltf">
-			</a-asset-item>
-			<a-asset-item id="capt"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/capt/capt.gltf">
-			</a-asset-item>
-			<a-asset-item id="falcon"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/falcon/falcon.gltf">
-			</a-asset-item>
-			<a-asset-item id="hulk"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/hulk/hulk.gltf">
-			</a-asset-item>
-			<a-asset-item id="thor"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/thor/thor.gltf">
-			</a-asset-item>
-			<a-asset-item id="panther"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/panther/panther.gltf">
-			</a-asset-item>
-			<a-asset-item id="vision"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/vision/vision.gltf">
-			</a-asset-item>
-			<a-asset-item id="war"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/war/war.gltf"></a-asset-item>
-			<a-asset-item id="thanos"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/thanos/thanos.gltf">
-			</a-asset-item>
-			<a-asset-item id="gob"
-				src="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/gob/gob.gltf"></a-asset-item>
 		</a-assets>
 		<a-marker id="anchor" type="pattern"
 			url="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/marker/pattern-tes.patt">
-			<a-entity id="dp_model" visible="true" gltf-model="#deadpool" scale="0.007 0.007 0.007" rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="ant_model" visible="false" gltf-model="#antman" scale="0.007 0.007 0.007" rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="spidy_model" visible="false" gltf-model="#spidy" scale="0.01 0.01 0.01" rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="im_model" visible="false" gltf-model="#im" scale="0.8 0.8 0.8" rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="capt_model" visible="false" gltf-model="#capt" scale="0.011 0.011 0.011" rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="hulk_model" visible="false" gltf-model="#hulk" scale="0.005 0.005 0.005" rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="thor_model" visible="false" gltf-model="#thor" scale="0.005 0.005 0.005" rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="thanos_model" visible="false" gltf-model="#thanos" scale="0.006 0.006 0.006"
-				rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="falcon_model" visible="false" gltf-model="#falcon" scale="0.021 0.021 0.021"
-				rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="gob_model" visible="false" gltf-model="#gob" scale="0.025 0.025 0.025" rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="panther_model" visible="false" gltf-model="#panther" scale="0.011 0.011 0.011"
-				rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="vision_model" visible="false" gltf-model="#vision" scale="0.011 0.011 0.011"
-				rotation="0 -90 90">
-			</a-entity>
-			<a-entity id="war_model" visible="false" gltf-model="#war" scale="0.011 0.011 0.011" rotation="0 -90 90">
+			<a-entity id="cat_model" gltf-model="#cat" scale="0.07 0.07 0.07" rotation="0 0 0">
 			</a-entity>
 		</a-marker>
 		<a-entity camera>
 		</a-entity>
 	</a-scene>
 </body>
-
-<script>
-		const scene = document.getElementById("scene")
-
-		const dp = document.getElementById("dp_model")
-		const ant = document.getElementById("ant_model")
-		const spidy = document.getElementById("spidy_model")
-		const im = document.getElementById("im_model")
-		const capt = document.getElementById("capt_model")
-		const hulk = document.getElementById("hulk_model")
-		const thor = document.getElementById("thor_model")
-		const thanos = document.getElementById("thanos_model")
-		const falcon = document.getElementById("falcon_model")
-		const gob  = document.getElementById("gob_model")
-		const panther = document.getElementById("panther_model")
-		const vision = document.getElementById("vision_model")
-		const war = document.getElementById("war_model")
-
-		var models = [dp, ant, spidy, im, capt, falcon, hulk, thor, panther, vision, war, gob, thanos]
-		var n_models = 13
-
-		var _text = [
-			"Deadpool",
-			"Ant Man",
-			"Spiderman",
-			"Iron Man",
-			"Captain America",
-			"Falcon",
-			"Hulk",
-			"Thor",
-			"Panther",
-			"Vision",
-			"War Machine",
-			"Green Goblin",
-			"Thanos"
-		]
-
-		const manager = new Hammer.Manager(scene)
-
-		const pan = new Hammer.Pan()
-		const pinch = new Hammer.Pinch()
-		var singletap = new Hammer.Tap({ event: "singletap" });
-		var doubletap = new Hammer.Tap({ event: "doubletap", taps: 2 });
-
-		const anchorRef = document.getElementById("anchor")
-		parent = window.parent.document
-
-		anchorRef.addEventListener("markerFound", (e)=>{
-			parent.getElementById("btn").style.visibility = "visible"
-			manager.add(pan)
-			manager.add(pinch)
-			manager.add([singletap, doubletap])
-		});
-		anchorRef.addEventListener("markerLost", (e)=>{
-			parent.getElementById("btn").style.visibility = "hidden"
-			manager.remove(pan)
-			manager.remove(pinch)
-			manager.remove([singletap, doubletap])
-		});
-
-		doubletap.recognizeWith(singletap)
-
-		var index = 0
-		var curr_model = models[index]
-
-		parent.getElementById("btn").addEventListener("click", clicked)
-
-		function clicked() {
-			model = curr_model.getAttribute("gltf-model")
-			scale = curr_model.getAttribute("scale").x
-			window.parent.location.href= "view.html?name=" + _text[index] + "&model=" + model + "&scale=" + scale
-		}
-
-		const btn = parent.getElementById("btn")
-		btn.innerHTML = "Pilih " + _text[index]
-
-		var min_scale = 0.007
-		var max_scale = 0.007 * 3
-		var old_scale = [0.007, 0.007, 0.01, 0.8, 0.011, 0.021, 0.005, 0.005, 0.011, 0.011, 0.011, 0.025, 0.006]
-
-		manager.on("doubletap", function(){
-			curr_model.setAttribute("visible", "false")
-
-			if (index < n_models-1){
-				index += 1
-			} else {
-				index = 0
-			}
-
-			curr_model = models[index]
-			curr_model.setAttribute("visible", "true")
-			btn.innerHTML = "Pilih " + _text[index]
-
-			scale = old_scale[index]
-			curr_model.setAttribute("scale", {x: scale, y: scale, z: scale})
-			min_scale = scale
-			max_scale = scale * 3
-
-			rotation = curr_model.getAttribute("rotation")
-			rotation.x = 0
-			rotation.y = -90
-			rotation.z = 90
-			curr_model.setAttribute("rotation", rotation)
-		});
-
-		manager.on("panleft", function(){
-			const rotation = curr_model.getAttribute("rotation")
-			rotation.x = rotation.x + 6
-			curr_model.setAttribute("rotation", rotation)
-		});
-		manager.on("panright", function(){
-			const rotation = curr_model.getAttribute("rotation")
-			rotation.x = rotation.x - 6
-			curr_model.setAttribute("rotation", rotation)
-		});
-		manager.on("panup", function(){
-			const rotation = curr_model.getAttribute("rotation")
-			rotation.z = rotation.z + 6
-			curr_model.setAttribute("rotation", rotation)
-		});
-		manager.on("pandown", function(){
-			const rotation = curr_model.getAttribute("rotation")
-			rotation.z = rotation.z - 6
-			curr_model.setAttribute("rotation", rotation)
-		});
-
-		manager.on("pinchout", function(){
-			const scale = curr_model.getAttribute("scale")
-			if (scale.x < max_scale){
-				scale.x += min_scale * 0.1
-				scale.y += min_scale * 0.1
-				scale.z += min_scale * 0.1
-			}
-			curr_model.setAttribute("scale", {x: scale.x, y: scale.y, z: scale.z})
-		});
-		manager.on("pinchin", function(){
-			const scale = curr_model.getAttribute("scale")
-			if (scale.x > min_scale){
-				scale.x -= min_scale * 0.1
-				scale.y -= min_scale * 0.1
-				scale.z -= min_scale * 0.1
-			}
-			curr_model.setAttribute("scale", {x: scale.x, y: scale.y, z: scale.z})
-		});
-	</script>
-
 </html>
