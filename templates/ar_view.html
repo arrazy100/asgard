@@ -13,6 +13,14 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+<style>
+    .embed-responsive-9by16 {
+        padding-bottom: 177.78%;
+    }
+    .no-scroll {
+        pointer-events: none;
+    }
+</style>
 <script>
     function toggleAR(){
         var div = document.getElementById("ar_div");
@@ -22,10 +30,10 @@
         {
             var new_embed = document.createElement("embed");
             new_embed.setAttribute("type", "text/html");
-            new_embed.setAttribute("class", "embed-responsive-item");
+            new_embed.setAttribute("class", "embed-responsive-item no-scroll");
             new_embed.setAttribute("id", "ar");
             new_embed.setAttribute("src", "/media/ar.html");
-            div.setAttribute("class", "embed-responsive embed-responsive-4by3");
+            div.setAttribute("class", "embed-responsive embed-responsive-9by16");
             div.appendChild(new_embed);
             toggle_button.innerHTML = "Close AR";
         }
