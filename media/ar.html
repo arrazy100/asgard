@@ -63,6 +63,7 @@
 				let title = parent.getElementById("desc_title");
 				let desc = parent.getElementById("desc_content");
 				title.innerHTML = "<b>" + marker.id + "</b>";
+				desc.innerHTML = all_model[i].model_description;
 				card.style.visibility = "visible";
 			});
 		}
