@@ -31,13 +31,12 @@
 	const scene = document.getElementById("scene");
 	const parent = window.parent.document;
 	var all_marker = document.getElementsByTagName("a-marker");
-	var i;
-	for (i = 0; i < all_marker.length; i++)
+	for (let i = 0; i < all_marker.length; i++)
 	{
-		all_marker[i].addEventListener("markerFound", (e)=>{
-			current_model = all_marker[i].id;
+	    let marker = all_marker[i];
+		marker.addEventListener("markerFound", (e)=>{
+			parent.getElementById("deksripsi").innerHTML = marker.id;
 		});
 	}
-	console.log(current_model);
 </script>
 </html>
