@@ -18,7 +18,7 @@
 				src="https://raw.githubusercontent.com/arrazy100/asgard_static/master/model/cat.gltf">
 			</a-asset-item>
 		</a-assets>
-		<a-marker id="anchor" type="pattern"
+		<a-marker id="cat" type="pattern"
 			url="https://raw.githubusercontent.com/arrazy100/ar-avengers-assets/master/marker/pattern-tes.patt">
 			<a-entity id="cat_model" gltf-model="#cat" scale="1 1 1" rotation="0 0 0">
 			</a-entity>
@@ -27,4 +27,17 @@
 		</a-entity>
 	</a-scene>
 </body>
+<script>
+	const scene = document.getElementById("scene");
+	const parent = window.parent.document;
+	var all_marker = document.getElementsByTagName("a-marker");
+	var i;
+	for (i = 0; i < all_marker.length; i++)
+	{
+		all_marker[i].addEventListener("markerFound", (e)=>{
+			current_model = all_marker[i].id;
+		});
+	}
+	console.log(current_model);
+</script>
 </html>
