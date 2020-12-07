@@ -96,7 +96,7 @@ signals.post_save.connect(receiver=create_quiz, sender=QuizModel)
 signals.post_delete.connect(receiver=delete_quiz, sender=QuizModel)
 
 class ARModel(models.Model):
-    model_id = models.CharField(max_length=100, default='cat')
+    model_id = models.CharField(max_length=100)
     model_name = models.CharField(max_length=100)
     model_description = models.TextField()
     model_url = models.URLField(max_length=100)
@@ -104,3 +104,6 @@ class ARModel(models.Model):
     model_scale_y = models.IntegerField()
     model_scale_z = models.IntegerField()
     marker_pattern_url = models.URLField(max_length=100)
+
+class ChannelModel(models.Model):
+    channel_name = models.CharField(max_length=100)
