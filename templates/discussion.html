@@ -1,20 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Begin Page Content -->
-<div class="container-fluid">
-
-  <!-- Page Heading -->
-  <div class="card">
-    <div class="card-header">
-        Discussion
-    </div>
-    <div class="card-body">
-        <div class="container mt-sm-3 my-1">
-            
+<div class="container" style="max-width:1170px; margin:auto;">
+  <h3 class="text-center" style="margin-top: 20px;">Pertemuan 1</h3>
+  <hr>
+  <div class="messaging">
+    <div class="mesgs">
+        <div class="msg_history">
+            <div class="incoming_msg">
+                <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                        alt="sunil" style="max-width: 100%;"> </div>
+                <div class="received_msg">
+                    <div class="received_withd_msg">
+                        <p>Test which is a new approach to have all
+                            solutions</p>
+                        <span class="time_date"> 11:01 AM | June 9</span>
+                    </div>
+                </div>
+            </div>
+            <div class="outgoing_msg">
+                <div class="sent_msg">
+                    <p>Test which is a new approach to have all
+                        solutions</p>
+                    <span class="time_date"> 11:01 AM | June 9</span>
+                </div>
+            </div>
         </div>
+        <div class="type_msg">
+            <div class="input_msg_write">
+                <input type="text" class="write_msg" placeholder="Type a message" />
+                <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
+                        aria-hidden="true"></i></button>
+            </div>
+        </div>
+      </div>
     </div>
-   </div>
 </div>
-<!-- /.container-fluid -->
 {% endblock %}
