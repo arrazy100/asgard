@@ -72,7 +72,6 @@
         dataType: 'json',
         success: function (data) {
           sendMessage(data.message, data.date);
-          $("#last_message").val(data.latest_id);
         }
       });
     };
