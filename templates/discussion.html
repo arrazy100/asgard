@@ -33,7 +33,7 @@
             <div class="input_msg_write">
                 <form id="message_form" method="post" send_message_url="{% url 'send_message_json' %}">
                   {% csrf_token %}
-                  <input id="new_message" name="message" type="text" class="write_msg" placeholder="Type a message" />
+                  <input id="new_message" name="message" type="text" class="write_msg" placeholder="Type a message" style="padding-right: 20%;"/>
                   <button id="send_button" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
                           aria-hidden="true"></i></button>
                 </form>
