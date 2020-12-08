@@ -5,11 +5,14 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django import forms
 from django.forms.models import model_to_dict
+from django.http import JsonResponse, HttpResponse
+from django.core import serializers
+from datetime import datetime
 
 from .forms import *
-from .models import *
 from json import dumps
-import os
+from .models import *
+import os, pytz
 
 def get_current_imageprofile(username):
     profile = UserProfileModel.objects.get(username=username)
@@ -157,8 +160,43 @@ def quiz_view(request):
 @login_required
 def discussion_view(request):
     image = get_current_imageprofile(request.user.username)
-    context = {'image_profile': image}
+    chats = ChatModel.objects.all()
+    try:
+        latest_id = ChatModel.objects.latest('pk').chat_id
+    except:
+        latest_id = 0
+
+    context = {'image_profile': image, 'chats': chats, 'latest_id': latest_id}
+
     return render(request, 'discussion.html', context=context)
+
+@login_required
+def send_message_json(request):
+    new_message = request.GET.get('message', None)
+    date = datetime.now(pytz.timezone('Asia/Jakarta'))
+    ChatModel.objects.create(message = new_message, username = request.user.username, date = date)
+    data = {
+        'message': new_message,
+        'date': date.strftime("%H:%M | %B %d"),
+        'latest_id': ChatModel.objects.latest('pk').chat_id
+    }
+
+    return JsonResponse(data)
+
+@login_required
+@csrf_exempt
+def get_new_message_json(request):
+    last_id = request.GET.get('last_id', None)
+    chats = ChatModel.objects.all()
+    chats = serializers.serialize('json', chats)
+    latest_id = ChatModel.objects.latest('pk').chat_id
+
+    data = {
+        'chats': chats,
+        'latest_id': dumps(latest_id)
+    }
+
+    return HttpResponse(data, content_type='application/json')
 
 @login_required
 def ar_view(request):
@@ -167,4 +205,5 @@ def ar_view(request):
     list_model = dumps(list_model)
     image = get_current_imageprofile(request.user.username)
     context = {'all_model': list_model, 'image_profile': image}
+
     return render(request, 'ar_view.html', context=context)

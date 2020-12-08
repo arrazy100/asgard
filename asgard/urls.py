@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth import views
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -28,6 +28,8 @@ urlpatterns = [
     path('ar/', v.ar_view, name='ar'),
     path('quiz/', v.quiz_view, name='quiz'),
     path('discussion/', v.discussion_view, name='discussion'),
+    re_path(r'^discussion/send_message/$', v.send_message_json, name='send_message_json'),
+    re_path(r'^discussion/refresh_message/$', v.get_new_message_json, name='get_new_message_json'),
     path('admin/', admin.site.urls),
     path('accounts/login/', v.login_view, name='login'),
     path('accounts/register/', v.register_view, name='register'),

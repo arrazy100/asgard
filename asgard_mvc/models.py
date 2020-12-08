@@ -4,7 +4,8 @@ from django.db.models import signals
 from django.dispatch import receiver
 
 from asgard import settings
-import os, shutil, xlrd
+from datetime import datetime
+import os, shutil, xlrd, pytz
 
 def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.username, filename)
@@ -105,5 +106,8 @@ class ARModel(models.Model):
     model_scale_z = models.IntegerField()
     marker_pattern_url = models.URLField(max_length=100)
 
-class ChannelModel(models.Model):
-    channel_name = models.CharField(max_length=100)
+class ChatModel(models.Model):
+    chat_id = models.AutoField(primary_key=True)
+    message = models.TextField()
+    username = models.CharField(max_length=100)
+    date = models.DateTimeField(blank = True, default=datetime.now(pytz.timezone('Asia/Jakarta')))
