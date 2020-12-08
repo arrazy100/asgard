@@ -31,7 +31,7 @@
         </div>
         <div class="type_msg" style="margin-top: 50px;">
             <div class="input_msg_write">
-                <form id="message_form" method="post" send_message_url="{% url 'send_message_json' %}">
+                <form id="message_form" action="#" send_message_url="{% url 'send_message_json' %}">
                   {% csrf_token %}
                   <input id="new_message" name="message" type="text" class="write_msg" placeholder="Type a message" style="padding-right: 20%;"/>
                   <button id="send_button" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
@@ -63,18 +63,19 @@
     msg_list.appendChild(outgoing_msg);
   }
 
-  $("#new_message").on('keyup', function (event) {
-    if (event.keyCode === 13) {
-      var form = $("#message_form");
-      $.ajax({
-        url: form.attr("send_message_url"),
-        data: form.serialize(),
-        dataType: 'json',
-        success: function (data) {
-          sendMessage(data.message, data.date);
-        }
-      });
-    };
+  $("#message_form").on("submit", function (event) {
+    $.ajax({
+      url: $(this).attr("send_message_url"),
+      type: 'POST',
+      headers: { "X-CSRFToken": '{{ csrf_token }}' },
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function (data) {
+        sendMessage(data.message, data.date);
+        $(this)[0].reset();
+      }
+    });
+    e.preventDefault();
   });
 
   var send_button = document.getElementById("send_button");
@@ -82,13 +83,14 @@
     var form = $("#message_form");
     $.ajax({
       url: form.attr("send_message_url"),
+      type: 'POST',
       data: form.serialize(),
       dataType: 'json',
       success: function (data) {
         sendMessage(data.message, data.date);
-        $("#last_message").val(data.latest_id);
       }
     });
+    form[0].reset();
   }
 </script>
 {% endblock %}

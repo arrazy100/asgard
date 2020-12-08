@@ -171,8 +171,9 @@ def discussion_view(request):
     return render(request, 'discussion.html', context=context)
 
 @login_required
+@csrf_exempt
 def send_message_json(request):
-    new_message = request.GET.get('message', None)
+    new_message = request.POST.get('message', None)
     date = datetime.now(pytz.timezone('Asia/Jakarta'))
     ChatModel.objects.create(message = new_message, username = request.user.username, date = date)
     data = {
