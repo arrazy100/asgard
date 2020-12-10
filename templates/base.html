@@ -65,7 +65,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Charts -->
-      <li class="nav-item">
+      <li class="nav-item  {% if request.path == '/discussion/' %}active{% endif %}">
         <a class="nav-link" href="{% url 'discussion' %}">
           <i class="fas fa-fw fa-comments"></i>
           <span>Disscussion</span></a>
