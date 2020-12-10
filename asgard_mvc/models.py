@@ -106,6 +106,9 @@ class ARModel(models.Model):
     model_scale_z = models.IntegerField()
     marker_pattern_url = models.URLField(max_length=100)
 
+    def __str__(self): 
+        return self.model_id
+
 class ChatModel(models.Model):
     chat_id = models.AutoField(primary_key=True)
     message = models.TextField()
